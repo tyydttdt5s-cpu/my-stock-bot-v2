@@ -1,6 +1,8 @@
 # stock_excel_v8_1.py
 # 已修正 CSV 欄位問題 + V8.1
 
+import os
+import requests
 import yfinance as yf
 import pandas as pd
 from openpyxl import load_workbook
@@ -267,3 +269,70 @@ print("\n====================")
 print("V8.1 分析完成")
 print(f"輸出檔案：{file_name}")
 print("====================")
+# =========================
+# LINE 推播
+# =========================
+
+try:
+
+    token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN")
+    user_id = os.getenv("LINE_USER_ID")
+
+    if token and user_id:
+
+        hold_df = result_df[
+            result_df["持股"] == "✓"
+        ]
+
+        message = "📈 股票分析報告\n\n"
+
+        if not hold_df.empty:
+
+            message += "【持股分析】\n"
+
+            for _, row in hold_df.iterrows():
+
+                message += (
+                    f"{row['股票代號']} {row['股票']}\n"
+                    f"評分：{row['技術評分']}\n"
+                    f"建議：{row['AI建議']}\n\n"
+                )
+
+        top5 = result_df.head(5)
+
+        message += "【排行榜 TOP5】\n"
+
+        for i, (_, row) in enumerate(top5.iterrows(), start=1):
+
+            message += (
+                f"{i}. "
+                f"{row['股票']} "
+                f"({row['技術評分']}分)\n"
+            )
+
+        headers = {
+            "Authorization": f"Bearer {token}",
+            "Content-Type": "application/json"
+        }
+
+        data = {
+            "to": user_id,
+            "messages": [
+                {
+                    "type": "text",
+                    "text": message[:5000]
+                }
+            ]
+        }
+
+        requests.post(
+            "https://api.line.me/v2/bot/message/push",
+            headers=headers,
+            json=data
+        )
+
+        print("LINE推播成功")
+
+except Exception as e:
+
+    print(f"LINE推播失敗：{e}")
