@@ -23,9 +23,5 @@ jobs:
         run: |
           pip install yfinance pandas requests openpyxl
 
-            - name: Install dependencies
-        run: |
-          pip install yfinance pandas requests openpyxl
-
       - name: Run bot
         run: python push_test.py
