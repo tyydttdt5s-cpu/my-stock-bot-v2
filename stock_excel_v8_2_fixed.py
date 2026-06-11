@@ -276,8 +276,8 @@ print("====================")
 try:
     import os
 
-    token = os.getenv("rNenPUfA3sVKidCeSqGdlw2LZCslHAIVJQoE7RItdtO1PY0+QngLrrFYjc12smDRySGcjIMUFlV1QSfSIBpKtRV8NCxCU5MmTZoXDn5pdHhbPgBmJBtsQh+6j0TPQ//blM+UV113E3u11uBWNotAQQdB04t89/1O/w1cDnyilFU=")
-    user_id = os.getenv("Uf9b775044fde7a9ff98dae88fd62e920")
+    token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN")
+    user_id = os.getenv("LINE_USER_ID")
 
     if token and user_id:
 
