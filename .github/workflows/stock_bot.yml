@@ -1,6 +1,9 @@
 name: Stock Bot
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -21,4 +24,3 @@ jobs:
           pip install yfinance pandas requests openpyxl
 
       - name: Run bot
-        run: python push_test.py
