@@ -24,4 +24,4 @@ jobs:
           pip install yfinance pandas requests openpyxl
 
       - name: Run bot
-  run   run: python stock_excel_v8_2_fixed.py
+        run: python stock_excel_v8_2_fixed.py
