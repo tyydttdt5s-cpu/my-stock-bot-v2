@@ -1,34 +1,24 @@
 name: Stock Bot
 
 on:
-  schedule:
-    - cron: '0 1 * * 1-5'
-    - cron: '30 5 * * 1-5'
-
   workflow_dispatch:
 
 jobs:
-  run-stock-analysis:
-
+  run-bot:
     runs-on: ubuntu-latest
 
     steps:
-
-      - name: Checkout Repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.10"
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: |
-          pip install -r requirements.txt
+          pip install yfinance pandas requests openpyxl
 
-      - name: Run Stock Analysis
-        env:
-          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
-          LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
-        run: |
-          python stock_excel_v8_2_fixed.py
+      - name: Run bot
+        run: python push_test.py
