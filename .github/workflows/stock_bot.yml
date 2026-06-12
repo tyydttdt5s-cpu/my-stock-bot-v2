@@ -1,9 +1,10 @@
 name: Stock Bot
 
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    # 台灣時間週一~週五 14:05
+    - cron: '05 06 * * 1-5'
+
   workflow_dispatch:
 
 jobs:
