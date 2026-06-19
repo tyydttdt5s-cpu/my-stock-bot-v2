@@ -1,6 +1,11 @@
 # stock_excel_v8_1.py 
 # 已修正 CSV 欄位問題 + V8.1 
- 
+from datetime import datetime
+
+print("=== V8_2_FIXED ===")
+print("GitHub執行時間:", datetime.now())
+print("==================")
+
 import os 
 import requests 
 import yfinance as yf 
