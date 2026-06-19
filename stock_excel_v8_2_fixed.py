@@ -271,7 +271,7 @@ for column in ws.columns:
 wb.save(file_name) 
  
 print("\n====================") 
-print("V8.1 分析完成") 
+print("V8.2 分析完成") 
 print(f"輸出檔案：{file_name}") 
 print("====================") 
 # ========================= 
