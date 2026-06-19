@@ -208,7 +208,7 @@ result_df = result_df.sort_values(
     ascending=[False, False] 
 ) 
  
-file_name = "股票分析V8_1.xlsx" 
+file_name = "股票分析V8_2.xlsx" 
  
 result_df.to_excel( 
     file_name, 
