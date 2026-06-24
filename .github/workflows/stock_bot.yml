@@ -2,11 +2,11 @@ name: Stock Bot
 
 on:
   schedule:
-    # 台灣時間 09:00
-    - cron: '1 1 * * 1-5'
+    # 台灣時間 09:01
+    - cron: '1 1 * * *'
 
-    # 台灣時間 13:30
-    - cron: '31 5 * * 1-5'
+    # 台灣時間 13:31
+    - cron: '31 5 * * *'
 
   workflow_dispatch:
 
